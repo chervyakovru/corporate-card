@@ -1,5 +1,12 @@
-import React from 'react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import React from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface User {
   id: string;
@@ -28,6 +35,7 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
             <TableCell>{user.name}</TableCell>
             <TableCell>{user.phoneNumber}</TableCell>
             <TableCell>{user.email}</TableCell>
+            <TableCell>{user.id}</TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -36,4 +44,3 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
 };
 
 export default UserList;
-
