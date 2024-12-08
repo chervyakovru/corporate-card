@@ -1,5 +1,6 @@
 "use client";
 
+import CreateUserRequest from "@/components/CreateUserRequest";
 import Link from "next/link";
 import { useEffect } from "react";
 
@@ -22,6 +23,7 @@ export default function Error({
         ← Back to Home
       </Link>
       <h1 className="text-2xl font-bold mb-4">Something went wrong!</h1>
+      <CreateUserRequest />
     </div>
   );
 }
