@@ -1,9 +1,8 @@
 import React from "react";
-import Link from "next/link";
-import CreateUserRequest from "@/components/CreateUserRequest";
-import UserProfile from "@/components/UserProfile";
+import BusinessCard from "@/components/BusinessCard";
+import { User } from "@/lib/types/user";
 
-async function getUser(id: string) {
+async function getUser(id: string): Promise<User> {
   const res = await fetch(`${process.env.URL}/api/users/${id}`);
   if (res.status === 404) {
     throw new Error("User not found");
@@ -19,17 +18,9 @@ async function UserPage({ params }: { params: { id: string } }) {
   const user = await getUser(params.id);
 
   return (
-    <div className="container mx-auto p-4">
-      <Link
-        href="/"
-        className="text-blue-500 hover:underline mb-4 inline-block"
-      >
-        ← Back to Home
-      </Link>
-      <h1 className="text-2xl font-bold mb-4">User Profile</h1>
-      <UserProfile user={user} />
-      <CreateUserRequest />
-    </div>
+    <main className="flex min-h-screen items-center justify-center p-4">
+      <BusinessCard {...user} />
+    </main>
   );
 }
 
