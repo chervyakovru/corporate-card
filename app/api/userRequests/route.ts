@@ -1,5 +1,6 @@
 import { UserRequest } from "@/lib/types/userRequest";
 import { getData, saveData } from "@/lib/utils";
+import { v4 as uuidv4 } from "uuid";
 
 import { NextResponse } from "next/server";
 
@@ -16,8 +17,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body: Omit<UserRequest, "id"> = await request.json();
-    // TODO: replace with uuid
-    const id = Date.now().toString();
+    const id = uuidv4();
     const userRequest = { id, name: body.name, phoneNumber: body.phoneNumber };
 
     const data = await getData();

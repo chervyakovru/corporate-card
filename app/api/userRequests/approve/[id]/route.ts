@@ -1,6 +1,7 @@
 import { User } from "@/lib/types/user";
 import { getData, saveData } from "@/lib/utils";
 import { NextResponse } from "next/server";
+import { v4 as uuidv4 } from "uuid";
 
 const EMAIL_STUB = "name@domain.com";
 
@@ -14,8 +15,7 @@ export async function POST(
     if (!userRequest) {
       throw new Error(`User Request with id: ${params.id} not found`);
     }
-    // TODO: replace with uuid
-    const id = Date.now().toString();
+    const id = uuidv4();
     const newUser: User = {
       ...userRequest,
       id,
